@@ -44,4 +44,14 @@ const createRestaurant = async (restaurantInfo) => {
 	return true;
 };
 
-module.exports = { getAllRestaurants, getRestaurantById, createRestaurant };
+const deleteRestaurant = async (idRestaurant) => {
+	const [restaurant] = await restaurantModel.getRestaurantById(idRestaurant);
+
+	if (!restaurant) throw new Error('Restaurant not found');
+
+	await restaurantModel.deleteRestaurant(idRestaurant);
+
+	return true;
+};
+
+module.exports = { getAllRestaurants, getRestaurantById, createRestaurant, deleteRestaurant };

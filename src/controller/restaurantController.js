@@ -27,4 +27,15 @@ const createRestaurant = async (req, res) => {
 	}
 };
 
-module.exports = { getAllRestaurants, getRestaurantById, createRestaurant };
+const deleteRestaurant = async (req, res) => {
+	const { id } = req.params;
+
+	try {
+		await restaurantService.deleteRestaurant(id);
+		res.status(204).end();
+	} catch (error) {
+		res.status(404).json({ message: error.message });
+	}
+};
+
+module.exports = { getAllRestaurants, getRestaurantById, createRestaurant, deleteRestaurant };

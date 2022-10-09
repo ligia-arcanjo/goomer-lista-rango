@@ -61,9 +61,19 @@ const createRestaurant = async (name, image_url, address, hours) => {
 	return restaurant.insertId;
 };
 
+const deleteRestaurant = async (idRestaurant) => {
+	const [restaurant] = await connection.execute(
+		'DELETE FROM Goomer.restaurants WHERE id = ?',
+		[idRestaurant]
+	);
+	console.log(restaurant.affectedRows);
+	return restaurant.affectedRows;
+};
+
 module.exports = { 
 	getAllRestaurants,
 	getRestaurantById,
 	getRestaurantAddress,
 	getRestaurantHours,
-	createRestaurant };
+	createRestaurant,
+	deleteRestaurant };

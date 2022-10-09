@@ -16,6 +16,6 @@ router.get('/:id', restaurantController.getRestaurantById);
 // router.put();
 
 // Excluir um restaurante
-// router.delete();
+router.delete('/:id', restaurantController.deleteRestaurant);
 
 module.exports = router;
