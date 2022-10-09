@@ -36,4 +36,34 @@ const getRestaurantHours = async (idRestaurant) => {
 	return hours;
 };
 
-module.exports = { getAllRestaurants, getRestaurantById, getRestaurantAddress, getRestaurantHours };
+const createRestaurant = async (name, image_url, address, hours) => {
+	const { postal_code, street, number, complement, city, state} = address;
+
+	const [restaurant] = await connection.execute(
+		'INSERT INTO Goomer.restaurants (name, image_url) VALUES (?, ?)',
+		[name, image_url],
+	);
+    
+	await connection.execute(
+		`INSERT INTO Goomer.address (id_restaurant, postal_code, street, number, complement, city, state) 
+        VALUES (?, ?, ?, ?, ?, ?, ?)`,
+		[restaurant.insertId, postal_code, street, number, complement, city, state],
+	);
+
+	hours.forEach(async (day) => {
+		await connection.execute(
+			`INSERT INTO Goomer.restaurant_hours (id_restaurant, start, end, day_week)
+            VALUES (?, ?, ?, ?)`,
+			[restaurant.insertId, day.start, day.end, day.day_week],
+		);
+	});
+
+	return restaurant.insertId;
+};
+
+module.exports = { 
+	getAllRestaurants,
+	getRestaurantById,
+	getRestaurantAddress,
+	getRestaurantHours,
+	createRestaurant };

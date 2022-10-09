@@ -7,7 +7,7 @@ const router = express.Router();
 router.get('/', restaurantController.getAllRestaurants);
 
 // Cadastrar novos restaurantes
-// router.post();
+router.post('/', restaurantController.createRestaurant);
 
 // Listar os dados de um restaurante pelo id
 router.get('/:id', restaurantController.getRestaurantById);

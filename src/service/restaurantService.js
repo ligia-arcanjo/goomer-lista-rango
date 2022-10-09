@@ -32,4 +32,16 @@ const getRestaurantOppeningHours = async (idRestaurant) => {
 	return hours;
 };
 
-module.exports = { getAllRestaurants, getRestaurantById };
+const createRestaurant = async (restaurantInfo) => {
+	const { name, image_url, address, hours } = restaurantInfo;
+
+	if (!name || !address || !hours) {
+		throw new Error('Incomplete registration information');
+	}
+
+	await restaurantModel.createRestaurant(name, image_url, address, hours);
+
+	return true;
+};
+
+module.exports = { getAllRestaurants, getRestaurantById, createRestaurant };
