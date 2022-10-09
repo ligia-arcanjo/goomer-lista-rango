@@ -6,4 +6,12 @@ const getAllRestaurants = async () => {
 	return restaurants;
 };
 
-module.exports = { getAllRestaurants };
+const getRestaurantById = async (idRestaurant) => {
+	const [restaurant] = await restaurantModel.getRestaurantById(idRestaurant);
+
+	if (restaurant.length < 1) throw new Error('Restaurant not found');
+
+	return restaurant;
+};
+
+module.exports = { getAllRestaurants, getRestaurantById };

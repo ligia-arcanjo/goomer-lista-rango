@@ -6,4 +6,12 @@ const getAllRestaurants = async () => {
 	return restaurants;
 };
 
-module.exports = { getAllRestaurants };
+const getRestaurantById = async (id) => {
+	const [restaurant] = await connection.execute(
+		'SELECT * FROM Goomer.restaurants WHERE id = ?', [id]
+	);
+
+	return restaurant;
+};
+
+module.exports = { getAllRestaurants, getRestaurantById };

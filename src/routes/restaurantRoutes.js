@@ -9,8 +9,8 @@ router.get('/', restaurantController.getAllRestaurants);
 // Cadastrar novos restaurantes
 // router.post();
 
-// Listar os dados de um restaurante
-// router.get(); // by id
+// Listar os dados de um restaurante pelo id
+router.get('/:id', restaurantController.getRestaurantById);
 
 // Alterar os dados um restaurante
 // router.put();
