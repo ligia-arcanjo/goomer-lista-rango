@@ -13,7 +13,7 @@ router.post('/', restaurantController.createRestaurant);
 router.get('/:id', restaurantController.getRestaurantById);
 
 // Alterar os dados um restaurante
-// router.put();
+router.put('/:id', restaurantController.updateRestaurant);
 
 // Excluir um restaurante
 router.delete('/:id', restaurantController.deleteRestaurant);

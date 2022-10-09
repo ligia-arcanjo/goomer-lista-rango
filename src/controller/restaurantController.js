@@ -38,4 +38,21 @@ const deleteRestaurant = async (req, res) => {
 	}
 };
 
-module.exports = { getAllRestaurants, getRestaurantById, createRestaurant, deleteRestaurant };
+const updateRestaurant = async (req, res) => {
+	const { id } = req.params;
+	const { body } = req;
+
+	try {
+		const updatedRestaurant = await restaurantService.updateRestaurant(id, body);
+		res.status(201).json(updatedRestaurant);
+	} catch (error) {
+		res.status(404).json({ message: error.message });
+	}
+};
+
+module.exports = { 
+	getAllRestaurants,
+	getRestaurantById,
+	createRestaurant,
+	deleteRestaurant,
+	updateRestaurant };

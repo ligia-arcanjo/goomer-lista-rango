@@ -70,10 +70,46 @@ const deleteRestaurant = async (idRestaurant) => {
 	return restaurant.affectedRows;
 };
 
+const updateRestaurant = async (id, restaurantInfo) => {
+	const { name, image_url, address, hours } = restaurantInfo;
+	await connection.execute(
+		`UPDATE Goomer.restaurants
+		SET name = ?, image_url = ?
+		WHERE id = ?`,
+		[name, image_url, id],
+	);
+
+	const { street, number, complement, city, state, postal_code } = address;
+	await connection.execute(
+		`UPDATE Goomer.address
+		SET street = ?, number = ?, complement = ?, city = ?, state = ?, postal_code = ?
+		WHERE id = ?`,
+		[street, number, complement, city, state, postal_code, id],
+	);
+
+	await updateHoursRestaurant(id, hours);
+};
+
+const updateHoursRestaurant = async (idRestaurant, hoursList) => {
+	await connection.execute(
+		'DELETE FROM Goomer.restaurant_hours WHERE id_restaurant = ?',
+		[idRestaurant]
+	);
+
+	hoursList.forEach(async (day) => {
+		await connection.execute(
+			`INSERT INTO Goomer.restaurant_hours (id_restaurant, start, end, day_week)
+            VALUES (?, ?, ?, ?)`,
+			[idRestaurant, day.start, day.end, day.day_week],
+		);
+	});
+};
+
 module.exports = { 
 	getAllRestaurants,
 	getRestaurantById,
 	getRestaurantAddress,
 	getRestaurantHours,
 	createRestaurant,
-	deleteRestaurant };
+	deleteRestaurant,
+	updateRestaurant };
