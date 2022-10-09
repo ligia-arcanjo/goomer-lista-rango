@@ -5,5 +5,5 @@ require('dotenv').config();
 const port = process.env.API_PORT || 3001;
 
 app.listen(port, async () => {
-	console.log(`API Goomer sendo executada na porta ${port}`);
+	console.log(`Server is running on PORT: ${port}`);
 });
