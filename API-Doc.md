@@ -6,24 +6,24 @@
 
 **endpoint:** GET http://localhost:3001/restaurant
 
-Retorno:
+Em caso de sucesso, a API retorna o status http `200` e a seguinte resposta:
 
     [
-    {
-        "id": 1,
-        "name": "Mais Sabor",
-        "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRB0rm36h5J9yfG_Cb37l48DrJMS4TsUJBdhw&usqp=CAU"
-    },
-    {
-        "id": 2,
-        "name": "Restaurante da Ilha",
-        "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR-c5QYggP1bi9wBT16MJO9ULK-oDQAoEFzA&usqp=CAU"
-    },
-    {
-        "id": 3,
-        "name": "Café Gourmet",
-        "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTa0ZRmXBJYtQz4Ip5iZfT44GsmfgxHPL5-EA&usqp=CAU"
-    }
+        {
+            "id": 1,
+            "name": "Mais Sabor",
+            "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRB0rm36h5J9yfG_Cb37l48DrJMS4TsUJBdhw&usqp=CAU"
+        },
+        {
+            "id": 2,
+            "name": "Restaurante da Ilha",
+            "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR-c5QYggP1bi9wBT16MJO9ULK-oDQAoEFzA&usqp=CAU"
+        },
+        {
+            "id": 3,
+            "name": "Café Gourmet",
+            "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTa0ZRmXBJYtQz4Ip5iZfT44GsmfgxHPL5-EA&usqp=CAU"
+        }
     ]
 
 ## Listar um restaurante pelo id
@@ -32,7 +32,7 @@ Retorno:
 
 **endpoint:** GET http://localhost:3001/restaurant/:id (http://localhost:3001/restaurant/1)
 
-Retorno:
+Em caso de sucesso, a API retorna o status http `200` e a seguinte resposta:
 
     {
         "id": 1,
@@ -93,7 +93,7 @@ Retorno:
 
 **endpoint:** POST http://localhost:3001/restaurant
 
-Para cadastrar um novo restaurante as seguintes informações devem ser enviadas no corpo da requisição:
+Para cadastrar um novo restaurante as seguintes informações devem ser enviadas no corpo da requisição um JSON com as chaves `name`, `image_url`, `address`, `hours`, como mostrado abaixo:
 
     {
         "name": "Novo Sabor",
@@ -174,7 +174,7 @@ Para atualizar dados de um restaurante, deve ser enviado no corpo da requisiçã
         ]
     }
 
-O retorno da requisição será um json com os dados atualizados, como mostrado abixo:
+Em caso de sucesso, a API retorna o status http `201` e a seguinte resposta com os itens atualizados:
 
     {
         "id": 1,
@@ -208,9 +208,9 @@ O retorno da requisição será um json com os dados atualizados, como mostrado 
 
 **endpoint:** DELETE http://localhost:3001/restaurant/:id
 
-- Quando o registro é apagado com sucesso, a API retorna o status http `204` e o corpo da resposta vazio.
+- Quando o registro é deletado com sucesso, a API retorna o status http `204` e o corpo da resposta vazio.
 
-- No caso de não existir no banco o registro que está sendo solicitado a deleção pelo endpoint, a API retorna o status http `404` e a seguinte mensagem no corpo da resposta:
+- No caso de não existir no banco de dados o registro que está sendo solicitado a deleção, a API retorna o status http `404` e a seguinte mensagem no corpo da resposta:
 
     ```
     {
@@ -218,4 +218,4 @@ O retorno da requisição será um json com os dados atualizados, como mostrado 
     }
     ```
 
-Importante: os endpoints listados estão utilizando a porta 3001 para rodar o servidor Node. Caso utilize outra porta, é importante trocar o endereço do endpoint.
+⚠️ Importante: os endpoints descritos estão utilizando a porta 3001 para rodar o servidor. Caso utilize outra porta, é importante atualizar o endereço do endpoint.
