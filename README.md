@@ -8,6 +8,8 @@
     - [O que foi desenvolvido](#o-que-foi-desenvolvido)
     - [Tecnologias utilizadas](#tecnologias-utilizadas)
     - [Banco de dados](#banco-de-dados)
+    - [Arquitetura MSC](#arquitetura-msc)
+    - [Documentação](#documentação)
   - [Execução da aplicação](#execução-da-aplicação)
     - [Pré-requisitos](#pré-requisitos)
     - [Variáveis de ambiente](#variáveis-de-ambiente)
@@ -30,15 +32,15 @@ Após isso foi preparado o setup do projeto utilizando as tecnologias descritas 
 
 ### Tecnologias utilizadas
 
-- Node.js versão 16
-- MySQL
-- Express versão 4.17
+- **Node.js** (versão 16)
+- **MySQL**
+- **Express** (versão 4.17):
   Disponiliza ferramentas que ajudam a organizar e construir APIs robustas e flexíveis.
-- ESlint
+- **ESlint**:
   Foi utilizado ajudar a garantir as boas práticas de desenvolvimento e padronização do código
-- mysql2
+- **mysql2**:
   Permite que uma aplicação Node.js consiga comunicar-se com o MySQL. Possui o código necessário para enviarmos comandos SQL para o nosso banco de dados MySQL, e receber as respostas dos comandos enviados.
-- dotenv
+- **dotenv**:
   É um módulo Javascript que carrega variáveis ​​de ambiente de um .envarquivo em process.env. Isso permite a utilização de variáveis de ambiente com mais facilidade, tornando a conexão da aplicação com o banco de dados mais segura.
 
 
