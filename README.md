@@ -1,4 +1,4 @@
-# Goomer Lista Rango
+# Goomer Lista Rango 🥐 🍕 🍔
 
 ## Sumário
 
@@ -12,9 +12,8 @@
     - [Pré-requisitos](#pré-requisitos)
     - [Variáveis de ambiente](#variáveis-de-ambiente)
     - [Instalação das dependências e execução](#instalação-das-dependências-e-execução)
-  - [Testes](#testes)
-    - [Execução dos testes](#execução-dos-testes)
-    - [Cobertura de testes](#cobertura-de-testes)
+  - [Desafios](#desafios)
+  - [Melhorias](#melhorias)
   - [Autoria](#autoria)
 
 ## Sobre este projeto
@@ -32,11 +31,16 @@ Após isso foi preparado o setup do projeto utilizando as tecnologias descritas 
 ### Tecnologias utilizadas
 
 - Node.js versão 16
-- Express versão 4.17
-- ESlint
 - MySQL
+- Express versão 4.17
+  Disponiliza ferramentas que ajudam a organizar e construir APIs robustas e flexíveis.
+- ESlint
+  Foi utilizado ajudar a garantir as boas práticas de desenvolvimento e padronização do código
 - mysql2
+  Permite que uma aplicação Node.js consiga comunicar-se com o MySQL. Possui o código necessário para enviarmos comandos SQL para o nosso banco de dados MySQL, e receber as respostas dos comandos enviados.
 - dotenv
+  É um módulo Javascript que carrega variáveis ​​de ambiente de um .envarquivo em process.env. Isso permite a utilização de variáveis de ambiente com mais facilidade, tornando a conexão da aplicação com o banco de dados mais segura.
+
 
 ### Banco de dados
 
@@ -123,19 +127,20 @@ Para realizar a conexão com o banco de dados, na raiz do projeto renomeie o arq
     npm run dev
     ```
 
-## Testes
+## Desafios
 
-### Execução dos testes
+O primeiro desafio foi a modelagem do banco de dados relacional, pensar quais tabelas seriam necessárias de acordo com as regras de negócio e também como elas deveriam se pensando em escalabilidade, inclusão de novos dados que podem ser necessários para melhor cadastro na plataforma.
 
-Para executar os testes, rode o comando:
+Ao longo do desenvolvimento me deparei também com algumas consultas ao banco que foram mais desafiadoras e acredito que possam ser melhoradas no futuro.
 
+## Melhorias
 
-    npm test
-   
+Novas funcionalidades:
+  Desenvolvimento do CRUD de produtos, onde seja possível listar, cadastrar, alterar e deletar um produto na base de dados, utilizando os dados que já foram normalizados nas tabelas criadas.
+  Implementação de uma rota PATCH para alterar pequenos dados no banco.
 
-### Cobertura de testes
-
-Para verificar a cobertura de testes unitários presentes na aplicação rode o comando:
+Testes:
+  Implementação de testes automatizados para garantia da manutenção e funcionamento da API.
 
 ## Autoria
 
